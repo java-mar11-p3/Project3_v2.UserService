@@ -9,14 +9,12 @@ import com.java.dto.User;
 @Service
 public class UserServiceImpl_1 implements UserService {
 	@Autowired
-	UserDao userRepo;
+	private UserDao userRepo;
 
 	@Override
 	public User login(String usernameInput, String passwordInput) {
 		// TODO Auto-generated method stub
-		System.out.println("1. Hello");
 		User result = userRepo.findByUsernameAndPassword(usernameInput, passwordInput);
-		System.out.println(result);
 		return result;
 	}
 

@@ -1,19 +1,36 @@
 package com.java.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.java.dto.User;
 import com.java.service.UserService;
 
-@Controller
+import lombok.Data;
+
+@RestController
+@RequestMapping("/users")
 public class UserController {
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	@PostMapping("/login")
-	public void login(@RequestParam String usernameInput,@RequestParam String passwordInput) {
-		System.out.println(userService.login(usernameInput, passwordInput));
+	public User login(@RequestBody LoginInfo loginInfo) {
+		
+		return userService.login(loginInfo.getUsername(), loginInfo.getPassword());
 	}
+	@GetMapping("/logout")
+	public void logout() {
+		System.out.println("Being implemented...");
+	}
+}
+@Data
+class LoginInfo{
+	String username;
+	String password;
 }
