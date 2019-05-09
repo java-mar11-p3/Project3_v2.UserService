@@ -1,14 +1,14 @@
 package com.java.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java.service.UserService;
 
-@RestController
+@Controller
 public class UserController {
 	@Autowired
 	UserService userService;
