@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
-@Entity
+@Entity(name="SFUser")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -26,4 +26,9 @@ public class User {
 	String password;
 	String salt;
 	String username;
+
+	@Override
+	public String toString() {
+		return "User: " + firstName + " " + lastName + "\nEmail: " + email + "\n";
+	}
 }
