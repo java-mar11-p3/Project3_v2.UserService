@@ -7,5 +7,6 @@ import com.java.dto.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User, Integer>{
-	User findByUsernameAndPassword(String username, String password);
+	User findByEmailAndPassword(String email, String password);
+	User findByEmail(String email);
 }

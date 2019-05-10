@@ -25,7 +25,6 @@ public class User {
 	String email;
 	String password;
 	String salt;
-	String username;
 
 	@Override
 	public String toString() {
