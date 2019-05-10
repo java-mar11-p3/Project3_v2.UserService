@@ -31,14 +31,13 @@ public class UserControllerTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setUsername( "test31");
 		user.setSalt("justice");
 		user.setPassword("network301");
 		
-		when(service.login("test31", "network301")).thenReturn(user);
+		when(service.login("testing@mail.com", "network301")).thenReturn(user);
 		ObjectMapper mapper = new ObjectMapper();
 		LoginInfo info = new LoginInfo();
-		info.setUsername("test31");
+		info.setEmail("testing@mail.com");
 		info.setPassword("network301");
 		String data = mapper.writeValueAsString(info);
 		mvc.perform(post("/users/login").contentType(MediaType.APPLICATION_JSON).content(data)).andExpect(status().isOk());

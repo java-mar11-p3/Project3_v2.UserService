@@ -12,10 +12,17 @@ public class UserServiceImpl_1 implements UserService {
 	private UserDao userRepo;
 
 	@Override
-	public User login(String usernameInput, String passwordInput) {
-		// TODO Auto-generated method stub
-		User result = userRepo.findByUsernameAndPassword(usernameInput, passwordInput);
+	public User login(String emailInput, String passwordInput) {
+		User result = userRepo.findByEmailAndPassword(emailInput, passwordInput);
 		return result;
 	}
+
+	@Override
+	public boolean checkUserEmail(String emailInput) {
+		if(userRepo.findByEmail(emailInput) != null)
+			return true;
+		return false;
+	}
+	
 
 }
