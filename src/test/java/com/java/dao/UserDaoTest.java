@@ -28,19 +28,18 @@ public class UserDaoTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setUsername( "test11");
 		user.setSalt("justice");
 		user.setPassword("network101");
 		testManager.merge(user);
 		//testManager.persist(user);
 		testManager.flush();
-		User result = repo.findByUsernameAndPassword("test11", "network101");
+		User result = repo.findByEmailAndPassword("testing@mail.com", "network101");
 		assertNotNull(result);
 		assertEquals(1, result.getUser_id());
 	}
 	@Test
 	public void getUserByInvalidLoginInfoTest() {
-		User result = repo.findByUsernameAndPassword("test12", "network102");
+		User result = repo.findByEmailAndPassword("testing@mail.com", "network102");
 		assertNull(result);
 		
 	}

@@ -39,21 +39,20 @@ public class UserServiceTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setUsername( "test21");
 		user.setSalt("justice");
 		user.setPassword("network201");
 		
-		Mockito.when(repo.findByUsernameAndPassword("test21", "network201")).thenReturn(user);
+		Mockito.when(repo.findByEmailAndPassword("testing@mail.com", "network201")).thenReturn(user);
 		
-		User result = service.login("test21", "network201");
+		User result = service.login("testing@mail.com", "network201");
 		assertNotNull(result);
 		assertEquals("For ", result.getFirstName());
 	}
 	
 	@Test
 	public void loginInvalidUserTest() {
-		Mockito.when(repo.findByUsernameAndPassword("test22", "network202")).thenReturn(null);
-		User user = service.login("test201", "network202");
+		Mockito.when(repo.findByEmailAndPassword("testing@mail.com", "network202")).thenReturn(null);
+		User user = service.login("testing@mail.com", "network202");
 		assertNull(user);
 	}
 }
