@@ -1,5 +1,6 @@
 package com.java.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,9 +23,9 @@ public class User {
 	int user_id;
 	String firstName;
 	String lastName;
+	@Column(unique = true)
 	String email;
 	String password;
-	String salt;
 
 	@Override
 	public String toString() {

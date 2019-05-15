@@ -32,7 +32,6 @@ public class UserControllerTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setSalt("justice");
 		user.setPassword("network301");
 		
 		when(service.login("testing@mail.com", "network301")).thenReturn(user);

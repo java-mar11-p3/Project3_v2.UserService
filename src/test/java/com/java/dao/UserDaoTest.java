@@ -28,7 +28,6 @@ public class UserDaoTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setSalt("justice");
 		user.setPassword("network101");
 		testManager.merge(user);
 		//testManager.persist(user);

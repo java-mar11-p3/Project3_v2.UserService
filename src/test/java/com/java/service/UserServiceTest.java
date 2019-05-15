@@ -46,7 +46,6 @@ public class UserServiceTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setSalt("justice");
 		user.setPassword("network201");
 		// We use mockito to mock the behavior of the mock repo object.
 		when(repo.findByEmailAndPassword("testing@mail.com", "network201")).thenReturn(user);
