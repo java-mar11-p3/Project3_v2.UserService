@@ -1,5 +1,5 @@
 FROM java:8u111-jdk
 
-ADD maven/Project3_v2.UserService.jar .
+ADD maven/Project3_v2.UserService.jar /UserService.jar
 
-CMD ["java","-jar", "Project3_v2.UserService.jar"]
+CMD ["java","-jar", "UserService.jar", "com.java.Host"]
