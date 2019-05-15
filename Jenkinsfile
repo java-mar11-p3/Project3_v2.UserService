@@ -18,11 +18,11 @@ pipeline {
       }
             stage('Docker') {
          steps {
-            sh 'sudo docker build -t sebenner/project_03:candidate-service .'
+            sh 'sudo docker build -t sebenner/project_03:user-service .'
             sh 'sudo docker login -u sebenner -p password_123 docker.io'
-            sh 'sudo docker push sebenner/project_03:candidate-service'
+            sh 'sudo docker push sebenner/project_03:user-service'
             sh 'sudo docker login -u sebenner -p password_123 docker.io'
-            sh 'sudo docker run -P sebenner/project_03:candidate-service'
+            sh 'sudo docker run -P sebenner/project_03:user-service'
          }
       }
       /*stage('Deploy') {
