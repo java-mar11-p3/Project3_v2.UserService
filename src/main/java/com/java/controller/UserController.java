@@ -25,28 +25,30 @@ public class UserController {
 	private UserService userService;
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody LoginInfo loginInfo) {
+		//create message object to return in case of error.
 		MessageObject emailError = new MessageObject("Email Not Found");
 		MessageObject passwordError = new MessageObject("Incorrect Password");
-		
+		//check if there is a user with the input email in the database.
+		//if not, return error message.
 		if(!userService.checkUserEmail(loginInfo.getEmail()))
 			return ResponseEntity.ok(emailError);
-		
+		//Use the input to find a user in the database.
+		//if no user is found, it means the password is incorrect.
 		User temp = userService.login(loginInfo.getEmail(), loginInfo.getPassword());
 		
 		if(temp == null)
 			return ResponseEntity.ok(passwordError);
+		//return the user object.
 		return ResponseEntity.ok(temp);
 	}
-	@GetMapping("/logout")
-	public void logout() {
-		System.out.println("Being implemented...");
-	}
 }
+// This class is used for storing the json data received from the front-end.
 @Data
 class LoginInfo{
 	String email;
 	String password;
 }
+// This class is used for sending back a message in json format to the front-end.
 @Data
 @AllArgsConstructor
 class MessageObject{
