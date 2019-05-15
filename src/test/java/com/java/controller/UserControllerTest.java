@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -31,15 +32,16 @@ public class UserControllerTest {
 		user.setFirstName("For ");
 		user.setLastName("testing");
 		user.setEmail("testing@mail.com");
-		user.setSalt("justice");
 		user.setPassword("network301");
 		
 		when(service.login("testing@mail.com", "network301")).thenReturn(user);
+		
 		ObjectMapper mapper = new ObjectMapper();
 		LoginInfo info = new LoginInfo();
 		info.setEmail("testing@mail.com");
 		info.setPassword("network301");
 		String data = mapper.writeValueAsString(info);
+		
 		mvc.perform(post("/users/login").contentType(MediaType.APPLICATION_JSON).content(data)).andExpect(status().isOk());
 	}
 }
